@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+      <record id="travel_tree_view" model="ir.ui.view">
+            <field name="name">travel.tree.view</field>
+            <field name="model">travel</field>
+            <field name="arch" type="xml">
+                <tree string="Voyages"
+                        decoration-danger="status == 'full'"
+                        decoration-success="status == 'available'">
+                    <field name="departure_city"/>
+                    <field name="city_of_arrival"/>
+                    <field name="date_depart"/>
+                    <field name="heure_depart"/>
+                    <field name="travel_price"/>
+                    <field name="nbre_place_disp"/>
+                    <field name="nbre_place_reserv" string="Nombre de place réservée"/>
+                    <field name="type_id"/>
+                    <field name="driver_id" readonly="1"/>
+                    <field name="bus_id" readonly="1"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+      </record>
+
+
+        <record id="travel_form_view" model="ir.ui.view">
+            <field name="name">travel.form.view</field>
+            <field name="model">travel</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group  string="informations de voyage">
+                                <field name="departure_city"/>
+                                <field name="city_of_arrival"/>
+                                <field name="date_depart"/>
+                                <field name="heure_depart"/>
+                                <field name="travel_price"/>
+                                <field name="nbre_place_disp" string="nombre de place disponible"/>
+                                <field name="nbre_place_reserv" string="nombre de place reserve"/>
+                                <field name="type_id"/>
+                                <field name="driver_id"/>
+                                <field name="bus_id"/>
+                                <field name="status"/>
+                                <field name="is_cancelled"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

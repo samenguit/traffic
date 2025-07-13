@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="driver_tree_view" model="ir.ui.view">
+        <field name="name">driver.form.view</field>
+        <field name="model">driver</field>
+        <field name="arch" type="xml">
+            <tree string="Chauffeur">
+
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="permis_filename" readonly="1"/>
+                <field name="permis_scan" filename="permis_filename"/>
+                <field name="cni_filename" readonly="1"/>
+                <field name="cni_scan" filename="cni_filename"/>
+                <field name="assurance_filename" readonly="1"/>
+                <field name="assurance_scan" filename="assurance_filename"/>
+                <field name="carte_grise_filename" readonly="1"/>
+                <field name="carte_grise_scan" filename="carte_grise_filename"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id="driver_form_view" model="ir.ui.view">
+        <field name="name">driver.form.view</field>
+        <field name="model">driver</field>
+        <field name="arch" type="xml">
+            <form string="Chauffeur">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Documents">
+                            <group string="Permis de conduire">
+                                <field name="permis_filename" readonly="1"/>
+                                <field name="permis_scan" filename="permis_filename"/>
+                            </group>
+
+                            <group string="CNI">
+                                <field name="cni_filename" readonly="1"/>
+                                <field name="cni_scan" filename="cni_filename"/>
+                            </group>
+
+                            <group string="Assurance">
+                                <field name="assurance_filename" readonly="1"/>
+                                <field name="assurance_scan" filename="assurance_filename"/>
+                            </group>
+
+                            <group string="Carte grise">
+                                <field name="carte_grise_filename" readonly="1"/>
+                                <field name="carte_grise_scan" filename="carte_grise_filename"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Actions -->
+    <record id="travel_action" model="ir.actions.act_window">
+        <field name="name">Travel</field>
+        <field name="res_model">travel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="city_action" model="ir.actions.act_window">
+        <field name="name">City</field>
+        <field name="res_model">city</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="agency_action" model="ir.actions.act_window">
+        <field name="name">Agency</field>
+        <field name="res_model">agency</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="booking_action" model="ir.actions.act_window">
+        <field name="name">Booking</field>
+        <field name="res_model">booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="driver_action" model="ir.actions.act_window">
+        <field name="name">Driver</field>
+        <field name="res_model">driver</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="payment_action" model="ir.actions.act_window">
+        <field name="name">Payment</field>
+        <field name="res_model">payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="bus_action" model="ir.actions.act_window">
+        <field name="name">Bus</field>
+        <field name="res_model">bus</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="customer_action" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="res_model">customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="type_voyage_action" model="ir.actions.act_window">
+        <field name="name">Type de voyage</field>
+        <field name="res_model">type_voyage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu principal -->
+    <menuitem id="traffic_root_menu" name="Traffic" sequence="10"/>
+
+    <menuitem id="city_first_menu" name="Cities" parent="traffic_root_menu" action="city_action"/>
+    <menuitem id="travel_first_menu" name="Travels" parent="traffic_root_menu" action="travel_action"/>
+    <menuitem id="booking_first_menu" name="Bookings" parent="traffic_root_menu" action="booking_action"/>
+    <menuitem id="agency_first_menu" name="Agencies" parent="traffic_root_menu" action="agency_action"/>
+    <menuitem id="driver_first_menu" name="Drivers" parent="traffic_root_menu" action="driver_action"/>
+    <menuitem id="bus_first_menu" name="Buses" parent="traffic_root_menu" action="bus_action"/>
+    <menuitem id="customer_first_menu" name="Customers" parent="traffic_root_menu" action="customer_action"/>
+    <menuitem id="type_voyage_first_menu" name="Types de voyage" parent="traffic_root_menu" action="type_voyage_action"/>
+
+</odoo>

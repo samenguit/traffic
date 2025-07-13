@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+         <template id="recap_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="container">
+                            <h2 class="text-center mb-4" style="color: #007bff;">Informations sur la Réservation</h2>
+                            <hr style="border-top: 2px solid #007bff; margin-bottom: 2em;"/>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <strong>Numéro du Voyage :</strong> <span t-esc="voyage.id" class="badge bg-secondary"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Nom :</strong> <span t-esc="booking.name" class="font-weight-bold"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>CNI :</strong> <span t-esc="booking.cni_number" class="font-weight-bold"/>
+                                </div>
+                            </div>
+                             <div class="row mb-3">
+                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Tel :</strong> <span t-esc="booking.phone" class="font-weight-bold"/>
+                                </div>
+                            </div>
+
+                            <h4 class="mt-4" style="color: #28a745;">Détails du Voyage</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Ville de départ :</strong> <span t-esc="voyage.departure_city.city_name" class="text-info"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Ville d’arrivée :</strong> <span t-esc="voyage.city_of_arrival.city_name" class="text-info"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Date de départ :</strong> <span t-esc="voyage.date_depart" class="text-info"/>
+                                </li>
+
+                                 <li class="list-group-item">
+                                    <strong>Prix :</strong> <span t-esc="booking.amount_total" class="text-info"/>
+                                </li>
+                            </ul>
+
+                            <hr class="mt-4"/>
+                            <p class="text-center text-muted mt-3"><a t-att-href="'/confirmation/%s/%s' % (voyage.id, cni)" class="btn btn-primary">
+    Effectuer le paiement
+</a></p>
+                        </div>
+                        <div>
+                            <p align="center">Vous pourrez annuler cette reservation apres le paiement<br>NB: Aucune annulation n'est possible a mois de 24h du la date de depart.<b>10% du prix de voyage sera preleve en cas d'annulation</b></br></p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <template id="travel_template" name="Voyage trouvé">
+      <t t-call="website.layout">
+        <t t-set="css_links" t-value="[(request.httprequest and 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')]"/>
+        <div class="container my-5">
+          <h2 class="text-center mb-4">
+            Résultats : <strong><t t-esc="depart"/></strong> → <strong><t t-esc="arrivee"/></strong>
+          </h2>
+
+          <t t-if="voyages">
+            <div class="table-responsive shadow rounded">
+
+              <!-- Formulaire de filtre -->
+              <form id="filtre_critere" class="row mb-4">
+                <div class="col-md-4">
+                  <label for="select_critere" class="form-label">Filtrer par :</label>
+                  <select id="select_critere" class="form-select">
+                    <option value="">-- Choisir un critère --</option>
+                    <option value="type">Type</option>
+                    <option value="date">Date de départ</option>
+                    <option value="heure">Heure de départ</option>
+                    <option value="agence">Agence</option>
+                  </select>
+                </div>
+
+                <div class="col-md-8">
+                  <label for="select_valeur" class="form-label">Valeur :</label>
+
+                  <!-- Sélecteurs dynamiques cachés -->
+                  <select id="select_type" class="form-select filtre-valeur" style="display:none;">
+                    <option value="">-- Sélectionnez un type --</option>
+                    <t t-foreach="types_disponibles" t-as="type">
+                      <option t-att-value="type.name"><t t-esc="type.name"/></option>
+                    </t>
+                  </select>
+
+                  <select id="select_date" class="form-select filtre-valeur" style="display:none;">
+                    <option value="">-- Sélectionnez une date --</option>
+                    <t t-foreach="dates_disponibles" t-as="date">
+                      <option t-att-value="date"><t t-esc="date"/></option>
+                    </t>
+                  </select>
+
+                  <select id="select_heure" class="form-select filtre-valeur" style="display:none;">
+                    <option value="">-- Sélectionnez une heure --</option>
+                    <t t-foreach="heures_disponibles" t-as="heure">
+                      <option t-att-value="heure"><t t-esc="heure"/></option>
+                    </t>
+                  </select>
+
+                  <select id="select_agence" class="form-select filtre-valeur" style="display:none;">
+                    <option value="">-- Sélectionnez une agence --</option>
+                    <t t-foreach="agence_disponibles" t-as="agence">
+                      <option t-att-value="agence"><t t-esc="agence"/></option>
+                    </t>
+                  </select>
+                </div>
+              </form>
+              <div class="text-end mb-4">
+                <button type="button" class="btn btn-outline-secondary" onclick="location.reload()">
+                  🔄 Réinitialiser
+                </button>
+              </div>
+              <table class="table table-hover align-middle text-center">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Départ</th>
+                    <th>Heure de départ</th>
+                    <th>Agence</th>
+                    <th>Type</th>
+                    <th>Immatriculation voiture</th>
+                    <th>Téléphone chauffeur</th>
+                    <th>Places disponibles</th>
+                    <th>Places réservées</th>
+                    <th>Prix</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach="[v for v in voyages if v.nbre_place_disp > 0 and v.status == 'available']" t-as="v">
+                    <tr t-attf-class="voyage-row animate__animated animate__fadeIn">
+
+                      <!-- Date formatée en ISO -->
+                      <td><t t-esc="v.date_depart.strftime('%Y-%m-%d')"/></td>
+                      <td><t t-esc="v.heure_depart"/></td>
+                      <td><t t-esc="v.bus_id.agency_id.name"/></td>
+                      <td><t t-esc="v.type_id.name"/></td>
+                      <td><t t-esc="v.bus_id.registration_number"/></td>
+                      <td><t t-esc="v.driver_phone"/></td>
+                      <td><t t-esc="v.nbre_place_disp"/></td>
+                      <td><t t-esc="v.nbre_place_reserv"/></td>
+                      <td><t t-esc="v.travel_price"/></td>
+                      <td>
+                        <t t-if="v.nbre_place_disp &gt; 0">
+                          <a t-att-href="'/web/login?redirect=/mon_espace?voyage_id=%s' % v.id" class="btn btn-primary">Reserver</a>
+                        </t>
+                        <t t-else="">
+                          <button class="btn btn-secondary" disabled="disabled">Complet</button>
+                        </t>
+                      </td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+
+            </div>
+          </t>
+          <t t-else="">
+            <div class="alert alert-warning text-center my-4">
+              <strong>Aucun voyage trouvé</strong> sur ce trajet pour le moment.
+            </div>
+          </t>
+
+          <div class="text-center mt-4">
+            <a href="/search" class="btn btn-secondary">⬅️ Retour à la recherche</a>
+          </div>
+        </div>
+
+        <t t-js="true">
+          <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+              const critereSelect = document.getElementById('select_critere');
+              const selectsValeur = document.querySelectorAll('.filtre-valeur');
+              const rows = document.querySelectorAll('table tbody tr');
+
+              critereSelect.addEventListener('change', function() {
+                // Cacher tous les selects valeur
+                selectsValeur.forEach(s => s.style.display = 'none');
+                selectsValeur.forEach(s => s.value = '');
+
+                // Afficher celui correspondant au critère sélectionné
+                const selected = this.value;
+                if (selected) {
+                  document.getElementById('select_' + selected).style.display = '';
+                }
+
+                filterRows();
+              });
+
+              selectsValeur.forEach(select => {
+                select.addEventListener('change', filterRows);
+              });
+
+              function filterRows() {
+                const critere = critereSelect.value;
+                let filtreVal = '';
+
+                if (critere) {
+                  filtreVal = document.getElementById('select_' + critere).value.toLowerCase().trim();
+                }
+
+                rows.forEach(row => {
+                  if (!filtreVal) {
+                    row.style.display = '';
+                    return;
+                  }
+
+                  let textToCheck = '';
+                  if (critere === 'type') textToCheck = row.cells[3].textContent.toLowerCase();
+                  else if (critere === 'date') textToCheck = row.cells[0].textContent.toLowerCase();
+                  else if (critere === 'heure') textToCheck = row.cells[1].textContent.toLowerCase();
+                  else if (critere === 'agence') textToCheck = row.cells[2].textContent.toLowerCase();
+
+                  if (textToCheck.includes(filtreVal)) {
+                    row.style.display = '';
+                  } else {
+                    row.style.display = 'none';
+                  }
+                });
+              }
+            });
+          </script>
+        </t>
+
+      </t>
+    </template>
+  </data>
+</odoo>

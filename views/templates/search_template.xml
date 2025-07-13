@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+         <template id="search_template" name="Recherche Voyage">
+            <t t-call="website.layout">
+              <div class="container mt-5 mb-5 p-4 border rounded shadow-sm bg-light">
+                <h3 class="mb-4 text-primary">Rechercher un voyage</h3>
+
+                <form action="/travel" method="get">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="depart" class="form-label">Ville de départ</label>
+                      <input type="text" class="form-control" id="depart" name="depart" placeholder="Ex : Douala" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="arrivee" class="form-label">Ville d'arrivée</label>
+                      <input type="text" class="form-control" id="arrivee" name="arrivee" placeholder="Ex : Yaoundé" required="required" />
+                    </div>
+                  </div>
+
+                  <div class="text-end">
+                    <button type="submit" class="btn btn-primary px-4">🔍 Rechercher</button>
+                  </div>
+                </form>
+              </div>
+            </t>
+       </template>
+    </data>
+</odoo>

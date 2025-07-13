@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Rapport PDF déclaré -->
+        <report
+            id="booking_qr_report"
+            model="booking"
+            string="Récapitulatif Réservation"
+            report_type="qweb-pdf"
+            name="your_module_name.recap_template"
+            file="your_module_name.recap_template"
+            print_report_name="'Réservation_' + object.name"
+        />
+
+        <!-- Template PDF avec QR -->
+        <template id="recap_template">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <h2 style="text-align:center; color:#007bff;">Informations sur la Réservation</h2>
+                    <hr style="border-top: 2px solid #007bff; margin-bottom: 2em;"/>
+
+                    <p><strong>Nom :</strong> <span t-esc="object.name"/></p>
+                    <p><strong>CNI :</strong> <span t-esc="object.cni_number"/></p>
+                    <p><strong>Téléphone :</strong> <span t-esc="object.phone"/></p>
+                    <p><strong>Montant :</strong> <span t-esc="object.amount_total"/> FCFA</p>
+
+                    <t t-if="object.voyage_id">
+                        <h4 style="color:#28a745;">Détails du Voyage</h4>
+                        <p><strong>Départ :</strong> <span t-esc="object.voyage_id.departure_city.city_name"/></p>
+                        <p><strong>Arrivée :</strong> <span t-esc="object.voyage_id.city_of_arrival.city_name"/></p>
+                        <p><strong>Date :</strong> <span t-esc="object.voyage_id.date_depart"/></p>
+                    </t>
+
+                    <t t-if="object.qr_code">
+                        <h4 style="margin-top: 30px;">QR Code</h4>
+                        <img t-att-src="'data:image/png;base64,%s' % object.qr_code" width="120" height="120"/>
+                    </t>
+
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

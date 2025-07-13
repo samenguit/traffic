@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="city_tree_view" model="ir.ui.view">
+            <field name="name">city.tree.view</field>
+            <field name="model">city</field>
+            <field name="arch" type="xml">
+                <tree string="city">
+                    <field name="city_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="city_form_view" model="ir.ui.view">
+            <field name="name">city.form.view</field>
+            <field name="model">city</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="city_name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

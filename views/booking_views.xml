@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="booking_tree_view" model="ir.ui.view">
+            <field name="name">booking.tree.view</field>
+            <field name="model">booking</field>
+            <field name="arch" type="xml">
+                <tree string="booking">
+                    <field name="departure"/>
+                    <field name="arrival"/>
+                    <field name="name"/>
+                    <field name="cni_number"/>
+                    <field name="nbre_place_reserv"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="booking_form_view" model="ir.ui.view">
+            <field name="name">booking.form.view</field>
+            <field name="model">booking</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="cni_number"/>
+                            <field name="nbre_place_reserv"/>
+                            <field name="phone"/>
+                            <field name="customer_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

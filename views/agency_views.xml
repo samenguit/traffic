@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="agency_tree_view" model="ir.ui.view">
+            <field name="name">agency.tree.view</field>
+            <field name="model">agency</field>
+            <field name="arch" type="xml">
+                <tree string="agency">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="agency_form_view" model="ir.ui.view">
+            <field name="name">agency.form.view</field>
+            <field name="model">agency</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

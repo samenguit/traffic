@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <template id="planning_template" name="Programmer un voyage">
+      <t t-call="website.layout">
+        <div class="container my-5">
+          <h2 class="text-center mb-4">Programmer un voyage</h2>
+
+          <form action="/voyage" method="post" class="col-md-6 offset-md-3 shadow p-4 rounded bg-light">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+            <div class="mb-3">
+              <label>Départ</label>
+              <select name="depart" class="form-control" required="required">
+                <t t-foreach="villes" t-as="v">
+                  <option t-att-value="v.id">
+                    <t t-esc="v.city_name"/>
+                  </option>
+                </t>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label>Arrivée</label>
+              <select name="arrivee" class="form-control" required="required">
+                <t t-foreach="villes" t-as="v">
+                  <option t-att-value="v.id">
+                    <t t-esc="v.city_name"/>
+                  </option>
+                </t>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label>Date départ</label>
+              <input type="date" name="date" class="form-control" required="required"/>
+            </div>
+
+            <div class="mb-3">
+              <label>Heure départ</label>
+              <input type="text" name="heure" class="form-control" placeholder="HH:MM" required="required"/>
+            </div>
+
+             <div class="mb-3">
+              <label>type</label>
+              <input type="text" name="type" class="form-control" placeholder="type de voyage" required="required"/>
+            </div>
+
+            <div class="mb-3">
+              <label>Prix</label>
+              <input type="text" name="prix" class="form-control" required="required"/>
+            </div>
+
+            <div class="mb-3">
+              <label>Places disponibles</label>
+              <input type="number" name="dispo" class="form-control" required="required"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Créer</button>
+          </form>
+        </div>
+      </t>
+    </template>
+
+    <template id="success_template" name="Voyage créé">
+      <t t-call="website.layout">
+        <div class="container my-5 text-center">
+          <h2 class="text-success">Voyage créé avec succès !</h2>
+          <a href="/espace_agence" class="btn btn-primary mt-3">Créer un autre voyage</a>
+        </div>
+      </t>
+    </template>
+
+    <template id="error_template" name="Erreur création">
+      <t t-call="website.layout">
+        <div class="container my-5 text-center">
+          <h2 class="text-danger">Erreur : <t t-esc="error"/></h2>
+          <a href="/espace_agence" class="btn btn-warning mt-3">Retour au formulaire</a>
+        </div>
+      </t>
+    </template>
+  </data>
+</odoo>

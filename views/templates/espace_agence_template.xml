@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+       <template id="espace_agence_template" name="Upload documents chauffeur">
+            <t t-call="website.layout">
+                <h2 class="text-center mb-4">Bienvenue <t t-esc="customer.name"/> 👋</h2>
+
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h4 class="card-title">Informations personnelles</h4>
+                  <p><strong>Nom :</strong> <t t-esc="customer.name"/></p>
+                  <p><strong>Email :</strong> <t t-esc="customer.email"/></p>
+                  <p><strong>Téléphone :</strong> <t t-esc="customer.phone"/></p>
+                </div>
+
+                <div class="text-center my-4" t-if="voyage">
+                  <a t-att-href="'/reservation/%s' % voyage.id" class="btn btn-success btn-lg">
+                    Réserver ce voyage
+                  </a>
+                </div>
+              </div>
+                <div>
+                    <p align="center"><a t-att-href="'/web/login?redirect=/espace_agence'" class="btn btn-primary">Programmer un voyage</a></p>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

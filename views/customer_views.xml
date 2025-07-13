@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="customer_tree_view" model="ir.ui.view">
+            <field name="name">customer.tree.view</field>
+            <field name="model">customer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="email"/>
+                    <field name="password"/>
+                    <field name="phone"/>
+                    <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="customer_form_view" model="ir.ui.view">
+            <field name="name">customer.form.view</field>
+            <field name="model">customer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="email"/>
+                    <field name="password"/>
+                    <field name="phone"/>
+                    <field name="user_id"/>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

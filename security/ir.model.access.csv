@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_city,access_city,model_city,base.group_user,1,1,1,1
+access_travel,access_travel,model_travel,,1,1,1,1
+access_booking,access_booking,model_booking,,1,1,1,1
+access_payment,access_payment,model_payment,,1,1,1,1
+access_city_public,access_city_public,model_city,base.group_public,1,1,1,1
+access_agency,access_agency,model_agency,,1,1,1,1
+access_driver,access_driver,model_driver,,1,1,1,1
+access_bus,access_bus,model_bus,,1,1,1,1
+access_account_move,access_account_move,model_account_move,,1,1,1,1
+access_telegram_bot,access_telegram_bot,model_telegram_bot,,1,1,1,1
+access_res_partner,access_res_partner,model_res_partner,,1,1,1,1
+access_customer,access_customer,model_customer,,1,1,1,1
+access_type_voyage,access_type_voyage,model_type_voyage,,1,1,1,1

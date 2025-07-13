@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="payment_tree_view" model="ir.ui.view">
+            <field name="name">payment.tree.view</field>
+            <field name="model">payment</field>
+            <field name="arch" type="xml">
+                <tree string="payment">
+                    <field name="phone"  widget="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="payment_form_view" model="ir.ui.view">
+            <field name="name">payment.form.view</field>
+            <field name="model">payment</field>
+            <field name ="arch" type="xml">
+                <form>
+                    <p>pour confirmer votre reservation, veuillez effectuer un paiement de <strong>5000f</strong> via orange money</p>
+                    <ul>
+                        <li>Numéro orange money:<strong>694 684 495</strong></li>
+                        <li>Nom du compte:<strong>Samenguit Arthur Jonathan</strong></li>
+                        <li>Numéro orange money:</li>
+                        <li>Numéro orange money:</li>
+                    </ul>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

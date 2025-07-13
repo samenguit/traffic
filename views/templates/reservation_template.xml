@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+       <template id="reservation_template" name="Formulaire de connexion">
+            <t t-call="website.layout">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="text-center">Informations de reservation</h2>
+                                </div>
+                                <div class="card-body">
+                                    <t t-if="error">
+                                        <div class="alert alert-danger" role="alert">
+                                            <t t-esc="error"/>
+                                        </div>
+                                    </t>
+                                    <form action="/store_reservation" method="get">
+                                        <div class="mb-3">
+                                            <label for="nom" class="form-label">Noms et prenoms</label>
+                                            <input id="login" type="text" name="nom" class="form-control"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cni" class="form-label">CNI</label>
+                                            <input id="cni" type="text" name="cni" class="form-control"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Telephone</label>
+                                            <input id="text" type="text" name="phone" class="form-control"/>
+                                        </div>
+                                         <div class="mb-3">
+                                            <label for="nbre_place_reserv" class="form-label">nombre place reserve</label>
+                                            <input id="pl_reserv" type="number" name="pl_reserv" class="form-control"/>
+                                        </div>
+                                         <input type="hidden" name="voyage_id" t-att-value="voyage_id"/>
+                                        <div class="d-grid gap-2">
+                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
+

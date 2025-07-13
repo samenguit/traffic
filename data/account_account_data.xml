@@ -1,0 +1,9 @@
+<odoo>
+    <record id="account_revenue_consulting" model="account.account">
+        <field name="name">Prestations de services Consulting</field>
+        <field name="code">706000</field>
+        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+        <field name="reconcile" eval="False"/>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+</odoo>

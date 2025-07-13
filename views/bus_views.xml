@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="bus_tree_view" model="ir.ui.view">
+            <field name="name">bus.tree.view</field>
+            <field name="model">bus</field>
+            <field name="arch" type="xml">
+                <tree string="bus">
+                    <field name="mark"/>
+                    <field name="registration_number"/>
+                    <field name="insurance_number"/>
+                    <field name="type"/>
+                    <field name="agency_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bus_form_view" model="ir.ui.view">
+            <field name="name">bus.form.view</field>
+            <field name="model">bus</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="mark"/>
+                            <field name="registration_number"/>
+                            <field name="insurance_number"/>
+                            <field name="type"/>
+                            <field name="agency_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

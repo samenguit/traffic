@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <template id="travel_reservation" name="Réserver un voyage">
+            <t t-call="website.layout">
+                <div class="container mt-5">
+                    <h2 class="mb-4 text-primary">Réserver le voyage : <t t-esc="voyage.departure_city.city_name"/> → <t t-esc="voyage.city_of_arrival.city_name"/></h2>
+                    <form t-att-action="'/facturation/%s' % voyage.id" method="post">
+
+                        <div class="form-group">
+                            <label for="nom">Nom et prénom :</label>
+                            <input type="text" id="nom" name="nom" class="form-control" placeholder="Ex: Arthur samenguit" required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="cni">Numero CNI :</label>
+                            <input type="text" id="cni" name="cni" class="form-control" placeholder="Ex: 108945936" required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone :</label>
+                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Ex: +237 694 684 495" required="required"/>
+                        </div>
+                        <input type="hidden" name="voyage_id" t-att-value="voyage.id"/>
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <button type="submit" class="btn btn-success mt-3">Valider</button>
+                    </form>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+

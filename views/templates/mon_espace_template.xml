@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <template id="mon_espace_template" name="Espace Client">
+      <t t-call="website.layout">
+        <div class="container mt-5 mb-5">
+          <h2 class="text-center mb-4">Bienvenue <t t-esc="customer.name"/> 👋</h2>
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title">Informations personnelles</h4>
+              <p><strong>Nom :</strong> <t t-esc="customer.name"/></p>
+              <p><strong>Email :</strong> <t t-esc="customer.email"/></p>
+              <p><strong>Téléphone :</strong> <t t-esc="customer.phone"/></p>
+            </div>
+
+            <div class="text-center my-4" t-if="voyage">
+              <a t-att-href="'/reservation/%s' % voyage.id" class="btn btn-success btn-lg">
+                Réserver ce voyage
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Mes réservations</h4>
+
+              <t t-if="reservations">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                       <th>Date de reservation</th>
+                       <th>Departure</th>
+                       <th>Destination</th>
+                       <th>jour du voyage</th>
+                       <th>Nombre de personnes</th>
+                       <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <t t-foreach="reservations" t-as="res">
+                      <tr>
+                        <td><t t-esc="res['record'].date_reservation.strftime('%Y-%m-%d %H:%M')"/></td>
+                        <td><t t-esc="res['record'].travel_id.departure_city.city_name"/></td>
+                        <td><t t-esc="res['record'].travel_id.city_of_arrival.city_name"/></td>
+                        <td><t t-esc="res['record'].travel_id.date_depart"/></td>
+                        <td><t t-esc="res['record'].nbre_place_reserv"/></td>
+                        <td>
+                          <t t-if="res['can_cancel']">
+                            <form t-att-action="'/cancel_booking/%d' % res['record'].id" method="post">
+                              <button type="submit" class="btn btn-danger btn-sm">Annuler</button>
+                            </form>
+                          </t>
+                          <t t-else="">
+                            <button class="btn btn-secondary" disabled="disabled" title="Annulation impossible moins de 24h avant le départ">
+                              Annulation impossible
+                            </button>
+                          </t>
+                        </td>
+                      </tr>
+                    </t>
+
+                  </tbody>
+                </table>
+              </t>
+
+              <t t-if="not reservations">
+                <p>Vous n'avez encore effectué aucune réservation.</p>
+              </t>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+
+    <template id="erreur_template" name="Erreur">
+      <t t-call="website.layout">
+        <div class="container mt-5">
+          <h1 class="text-danger">Erreur</h1>
+          <p t-esc="message"/>
+        </div>
+      </t>
+    </template>
+  </data>
+</odoo>

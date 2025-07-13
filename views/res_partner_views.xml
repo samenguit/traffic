@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_partner_tree_inherit_cni" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.cni</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="cni"/>
+                <field name="telegram_chat_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_partner_form_inherit_cni" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.cni</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="inside">
+                <field name="cni"/>
+                <field name="telegram_chat_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+

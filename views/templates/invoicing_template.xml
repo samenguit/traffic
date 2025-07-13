@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+       <template id="invoicing_template" name="Facturation">
+            <t t-call="website.layout">
+               <p align="center"><h3>paiement effectue avec succes</h3></p>
+                <p align="center"><a t-att-href="'/facturation/%s' % booking.id" class="btn btn-success">
+                    Générer la facture
+                </a></p>
+
+            </t>
+        </template>
+    </data>
+</odoo>
+

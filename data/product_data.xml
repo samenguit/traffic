@@ -1,0 +1,8 @@
+<odoo>
+    <record id="product_consulting_service" model="product.product">
+        <field name="name">Consulting Service</field>
+        <field name="type">service</field>
+        <field name="list_price">150.0</field>
+        <field name="property_account_income_id" ref="traffic.account_revenue_consulting"/>
+    </record>
+</odoo>

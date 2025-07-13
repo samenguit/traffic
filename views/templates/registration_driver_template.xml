@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+       <template id="registration_driver_template" name="Upload documents chauffeur">
+            <t t-call="website.layout">
+                <div class="container mt-5 mb-5">
+                    <div class="card shadow-lg p-4">
+                        <h2 class="text-center mb-4">Envoyer les documents du chauffeur</h2>
+                        <form t-att-action="'/driver/upload_documents_submit'" method="post" enctype="multipart/form-data">
+                            <!-- CSRF Token -->
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                            <div class="form-group mb-3">
+                                <label for="name">Noms et prenoms :</label>
+                                <input type="text" class="form-control" id="name" name="name" required="required"/>
+                                <label for="phone">Numéro de téléphone :</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="+237 6XX XX XX XX" required="required"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="permis">Permis de conduire :</label>
+                                <input type="file" class="form-control" id="permis" name="permis" required="required"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cni">Carte nationale d'identité :</label>
+                                <input type="file" class="form-control" id="cni" name="cni" required="required"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="assurance">Assurance du véhicule :</label>
+                                <input type="file" class="form-control" id="assurance" name="assurance" required="required"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="carte_grise">Carte grise du véhicule :</label>
+                                <input type="file" class="form-control" id="carte_grise" name="carte_grise" required="required"/>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary px-5">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
