@@ -17,7 +17,7 @@
                     <field name="nbre_place_reserv" string="Nombre de place réservée"/>
                     <field name="type_id"/>
                     <field name="driver_id" readonly="1"/>
-                    <field name="bus_id" readonly="1"/>
+                    <field name="agency_id" readonly="1"/>
                     <field name="status"/>
                 </tree>
             </field>
@@ -41,7 +41,7 @@
                                 <field name="nbre_place_reserv" string="nombre de place reserve"/>
                                 <field name="type_id"/>
                                 <field name="driver_id"/>
-                                <field name="bus_id"/>
+                                <field name="agency_id"/>
                                 <field name="status"/>
                                 <field name="is_cancelled"/>
                             </group>

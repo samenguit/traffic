@@ -12,3 +12,4 @@ from . import invoicing_controller
 from . import resp_agence
 from . import espace_agence
 from . import voyage
+from . import login_resp

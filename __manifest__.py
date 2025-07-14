@@ -29,6 +29,7 @@
         'views/templates/invoicing_template.xml',
         'views/templates/mon_espace_template.xml',
         'views/templates/espace_agence_template.xml',
+        'views/templates/login_resp_template.xml',
         'views/type_voyage_views.xml',
         'views/res_partner_views.xml',
         'data/account_account_data.xml',

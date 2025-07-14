@@ -7,6 +7,9 @@
             <field name="arch" type="xml">
                 <tree string="agency">
                     <field name="name"/>
+                    <field name="email"/>
+                    <field name="password"/>
+                    <field name="user_id"/>
                 </tree>
             </field>
         </record>
@@ -19,6 +22,9 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+                            <field name="email"/>
+                            <field name="password"/>
+                            <field name="user_id"/>
                         </group>
                     </sheet>
                 </form>

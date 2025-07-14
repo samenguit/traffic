@@ -66,6 +66,12 @@ class ReservationController(http.Controller):
             'customer_id': customer.id,
         })
 
+        # Mise à jour des places dans travel
+        travel.write({
+            'nbre_place_disp': travel.nbre_place_disp - nb_reserv,
+            'nbre_place_reserv': travel.nbre_place_reserv + nb_reserv,
+        })
+
 
 
         from urllib.parse import quote

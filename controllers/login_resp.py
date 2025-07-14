@@ -5,13 +5,13 @@ from odoo.exceptions import AccessDenied
 class TrafficLogin(http.Controller):
 
     # Affiche le formulaire
-    @http.route('/login', type='http', auth='public', website=True, methods=['GET'])
-    def login_form(self, **kw):
-        return request.render('traffic.loggin_template')
+    @http.route('/login_resp', type='http', auth='public', website=True, methods=['GET'])
+    def login_resp_form(self, **kw):
+        return request.render('traffic.login_resp_template')
 
     # Traite le formulaire soumis
-    @http.route('/loggin_check', type='http', auth='public', website=True, methods=['POST'])
-    def login_check(self, **kw):
+    @http.route('/login_resp_check', type='http', auth='public', website=True, methods=['POST'])
+    def login_resp_check(self, **kw):
         username = kw.get('email')
         password = kw.get('password')
 
@@ -21,10 +21,10 @@ class TrafficLogin(http.Controller):
             uid = None
 
         if uid:
-            customer = request.env['customer'].sudo().search([('user_id', '=', uid)], limit=1)
-            if customer:
-                request.session['customer_id'] = customer.id
-                return request.redirect('/mon_espace')
+            agency = request.env['agency'].sudo().search([('user_id', '=', uid)], limit=1)
+            if agency:
+                request.session['agency_id'] = agency.id
+                return request.redirect('/espace_agence')
             else:
                 return "Utilisateur trouvé, mais aucun client lié."
         else:

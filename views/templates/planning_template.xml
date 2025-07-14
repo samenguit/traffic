@@ -42,9 +42,12 @@
             </div>
 
              <div class="mb-3">
-              <label>type</label>
-              <input type="text" name="type" class="form-control" placeholder="type de voyage" required="required"/>
-            </div>
+              <select name="type">
+                <t t-foreach="types" t-as="type">
+                  <option t-att-value="type.name"><t t-esc="type.name"/></option>
+                </t>
+              </select>
+             </div>
 
             <div class="mb-3">
               <label>Prix</label>

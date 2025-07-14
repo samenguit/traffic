@@ -14,10 +14,10 @@ class Travel(models.Model):
     nbre_place_disp=fields.Integer('place disponible')
     nbre_place_reserv = fields.Integer('place reserve', readonly=True)
     customer_ids=fields.Many2many('res.partner', string='client')
-    bus_id=fields.Many2one('bus',string='bus')
     type_id =fields.Many2one('type_voyage')
     travel_price = fields.Float('Prix', store=True)
     driver_id = fields.Many2one('res.partner', string='chauffeur')
+    agency_id = fields.Many2one('agency', string='agency' )
 
     reservation_ids = fields.One2many('booking', 'travel_id', string="Réservations")
 

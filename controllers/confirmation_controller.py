@@ -51,7 +51,7 @@ class ConfirmationController(http.Controller):
 
         #mise a jour des places
 
-        travel.nbre_place_disp = travel.nbre_place_disp - booking.nbre_place_reserv
+
 
 
         #email client

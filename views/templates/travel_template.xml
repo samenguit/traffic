@@ -70,8 +70,6 @@
                     <th>Heure de départ</th>
                     <th>Agence</th>
                     <th>Type</th>
-                    <th>Immatriculation voiture</th>
-                    <th>Téléphone chauffeur</th>
                     <th>Places disponibles</th>
                     <th>Places réservées</th>
                     <th>Prix</th>
@@ -83,12 +81,10 @@
                     <tr t-attf-class="voyage-row animate__animated animate__fadeIn">
 
                       <!-- Date formatée en ISO -->
-                      <td><t t-esc="v.date_depart.strftime('%Y-%m-%d')"/></td>
+                      <td><t t-esc="v.date_depart.strftime('%Y-%m-%d') if v.date_depart else ''"/></td>
                       <td><t t-esc="v.heure_depart"/></td>
-                      <td><t t-esc="v.bus_id.agency_id.name"/></td>
+                      <td><t t-esc="v.agency_id.name"/></td>
                       <td><t t-esc="v.type_id.name"/></td>
-                      <td><t t-esc="v.bus_id.registration_number"/></td>
-                      <td><t t-esc="v.driver_phone"/></td>
                       <td><t t-esc="v.nbre_place_disp"/></td>
                       <td><t t-esc="v.nbre_place_reserv"/></td>
                       <td><t t-esc="v.travel_price"/></td>
